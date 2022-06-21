@@ -1,38 +1,38 @@
-const monsterHealthBar = document.getElementById('monster-health');
-const playerHealthBar = document.getElementById('player-health');
-const bonusLifeEl = document.getElementById('bonus-life');
+const opponentHealthBar = document.getElementById("opponent-health");
+const myHealthBar = document.getElementById("my-health");
+const bonusLifeEl = document.getElementById("bonus-life");
 
-const attackBtn = document.getElementById('attack-btn');
-const strongAttackBtn = document.getElementById('strong-attack-btn');
-const healBtn = document.getElementById('heal-btn');
-const logBtn = document.getElementById('log-btn');
+const attackBtn = document.getElementById("attack-btn");
+const strongAttackBtn = document.getElementById("strong-attack-btn");
+const healBtn = document.getElementById("heal-btn");
+const logBtn = document.getElementById("log-btn");
 
 function adjustHealthBars(maxLife) {
-  monsterHealthBar.max = maxLife;
-  monsterHealthBar.value = maxLife;
-  playerHealthBar.max = maxLife;
-  playerHealthBar.value = maxLife;
+  opponentHealthBar.max = maxLife;
+  opponentHealthBar.value = maxLife;
+  myHealthBar.max = maxLife;
+  myHealthBar.value = maxLife;
 }
 
 function dealMonsterDamage(damage) {
   const dealtDamage = Math.random() * damage;
-  monsterHealthBar.value = +monsterHealthBar.value - dealtDamage;
+  opponentHealthBar.value = +monsterHealthBar.value - dealtDamage;
   return dealtDamage;
 }
 
 function dealPlayerDamage(damage) {
   const dealtDamage = Math.random() * damage;
-  playerHealthBar.value = +playerHealthBar.value - dealtDamage;
+  myHealthBar.value = +myHealthBar.value - dealtDamage;
   return dealtDamage;
 }
 
 function increasePlayerHealth(healValue) {
-  playerHealthBar.value = +playerHealthBar.value + healValue;
+  myHealthBar.value = +myHealthBar.value + healValue;
 }
 
 function resetGame(value) {
-  playerHealthBar.value = value;
-  monsterHealthBar.value = value;
+  myHealthBar.value = value;
+  opponentHealthBar.value = value;
 }
 
 function removeBonusLife() {
@@ -40,5 +40,5 @@ function removeBonusLife() {
 }
 
 function setPlayerHealth(health) {
-  playerHealthBar.value = health;
+  myHealthBar.value = health;
 }
