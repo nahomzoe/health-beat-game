@@ -159,7 +159,36 @@ const healMeHandler = () => {
 };
 
 const printLogHandler = () => {
-  console.log(battleLog);
+  let i = 0;
+  while (i < 3) {
+    console.log(i);
+    i++;
+  }
+  //   for (let i = 0; i < 3; i++) {
+  //     console.log("-----");
+  //   }
+
+  //   for (let i = 10; i > 0; i--) {
+  //     console.log("-----");
+  //   }
+  //   for (let i = 0; i < battleLog.length; i++) {
+  //     console.log(battleLog[i]);
+  //   }
+  //let i = 0;
+  //   for (const ele of battleLog) {
+  //     console.log(ele);
+  //     console.log(i);
+  //     i++
+
+  //   }
+  //   let i = 0;
+  //   for (const logEntry of battleLog) {
+  //     console.log(`#${i}`);
+  //     for (const key in logEntry) {
+  //       console.log(`${key} => ${logEntry[key]}`);
+  //     }
+  //     i++;
+  //   }
 };
 
 attackBtn.addEventListener("click", attackHandler);
