@@ -17,6 +17,7 @@ const enteredValue = Number(
 
 let chosenMaxLife = enteredValue;
 let battleLog = [];
+let lastLoggedEntry;
 
 if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
   chosenMaxLife = 100;
@@ -159,11 +160,19 @@ const healMeHandler = () => {
 };
 
 const printLogHandler = () => {
-  let i = 0;
-  while (i < 3) {
-    console.log(i);
-    i++;
-  }
+  //   let i = 0;
+  //   while (i < 3) {
+  //     console.log(i);
+  //     i++;
+  //   }
+  //   let sum = 0;
+  //   for (let i = 0; i < 3; i++) {
+  //     for (let j = 5; j > 2; j--) {
+  //       sum = sum + j + i;
+  //     }
+  //   }
+  //   console.log(sum);
+
   //   for (let i = 0; i < 3; i++) {
   //     console.log("-----");
   //   }
@@ -181,14 +190,19 @@ const printLogHandler = () => {
   //     i++
 
   //   }
-  //   let i = 0;
-  //   for (const logEntry of battleLog) {
-  //     console.log(`#${i}`);
-  //     for (const key in logEntry) {
-  //       console.log(`${key} => ${logEntry[key]}`);
-  //     }
-  //     i++;
-  //   }
+  let i = 0;
+  for (const logEntry of battleLog) {
+    if ((!lastLoggedEntry && lastLoggedEntry !== 0) || lastLoggedEntry < i) {
+      console.log(`#${i}`);
+      for (const key in logEntry) {
+        console.log(`${key} => ${logEntry[key]}`);
+      }
+      lastLoggedEntry = i;
+
+      break;
+    }
+    i++;
+  }
 };
 
 attackBtn.addEventListener("click", attackHandler);
