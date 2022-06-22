@@ -11,16 +11,29 @@ const LOG_EVENT_OPPONENT_ATTACK = "OPPONENT_ATTACK";
 const LOG_EVENT_MY_HEAL = "MY_HEAL";
 const LOG_EVENT_GAME_OVER = "GAME_OVER";
 
-const enteredValue = Number(
-  prompt("Maximum life for you and your opponent", "100")
-);
-
-let chosenMaxLife = enteredValue;
 let battleLog = [];
 let lastLoggedEntry;
 
-if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
+function getMaxLIfeValues() {
+  const enteredValue = Number(
+    prompt("Maximum life for you and your opponent", "100")
+  );
+
+  const parsedValue = enteredValue;
+  if (isNaN(parsedValue) || parsedValue <= 0) {
+    throw { message: "Invalid user input, not a number!" };
+  }
+  return parsedValue;
+}
+
+let chosenMaxLife;
+
+try {
+  chosenMaxLife = getMaxLIfeValues();
+} catch (error) {
+  console.log(error);
   chosenMaxLife = 100;
+  alert("You entered something wrong, default of 100 was used.");
 }
 
 let currentOpponentHealth = chosenMaxLife;
